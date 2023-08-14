@@ -1,124 +1,232 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React from "react";
+import Breadcrumb from "../component/Breadcrumb";
+import PageHeding from "../component/PageHeding";
+import { useNavigate } from "react-router-dom";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
-
-export default function Register() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-
+const Register = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <ThemeProvider theme={defaultTheme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+      <Breadcrumb value="Create an Account" />
+      <PageHeding heading="Login or Create an Account" />
+      <div
+        className="container"
+        style={{ marginTop: 50, fontFamily: "'Roboto', sans-serif" }}
+      >
+        <div>
+          <h1
+            style={{
+              fontSize: 20,
+              color: "#414141",
+              margin: 0,
+              fontWeight: 600,
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <Box
-              component="form"
-              onSubmit={handleSubmit}
-              noValidate
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+            Personal Information
+          </h1>
+          <hr style={{ marginTop: 20 }} />
+          <p style={{ color: "#838383", fontSize: 15, marginBottom: 0 }}>
+            Please enter the following information to create your account
+          </p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ width: "49%" }}>
+              <label
+                htmlFor="firstName"
+                className="form-label"
+                style={{
+                  fontSize: 15,
+                  color: "#414141",
+                  fontFamily: "'Roboto', sans-serif",
+                  margin: "20px auto 0px 0px",
+                }}
               >
-                Sign In
-              </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
-            </Box>
-          </Box>
-          <Copyright sx={{ mt: 8, mb: 4 }} />
-        </Container>
-      </ThemeProvider>
+                First Name<sup>*</sup>
+              </label>
+              <input
+                className="form-control"
+                id="firstName"
+                name="firstName"
+                // error={errors.email}
+                // onBlur={handleBlur}
+                // value={values.email}
+                // onChange={(e) => setFieldValue("email", e.target.value)}
+                style={{
+                  height: 40,
+                  borderRadius: 0,
+                  color: "#212121",
+                  fontFamily: "'Roboto', sans-serif",
+                  marginTop: 15,
+                }}
+              />
+            </div>
+            <div style={{ width: "49%" }}>
+              <label
+                htmlFor="lastName"
+                className="form-label"
+                style={{
+                  fontSize: 15,
+                  color: "#414141",
+                  fontFamily: "'Roboto', sans-serif",
+                  margin: "20px auto 0px 0px",
+                }}
+              >
+                Last Name<sup>*</sup>
+              </label>
+              <input
+                className="form-control"
+                id="lastName"
+                name="lastName"
+                // error={errors.email}
+                // onBlur={handleBlur}
+                // value={values.email}
+                // onChange={(e) => setFieldValue("email", e.target.value)}
+                style={{
+                  borderRadius: 0,
+                  color: "#212121",
+                  height: 40,
+                  fontFamily: "'Roboto', sans-serif",
+                  marginTop: 15,
+                }}
+              />
+            </div>
+          </div>
+          <label
+            htmlFor="email"
+            className="form-label"
+            style={{
+              fontSize: 15,
+              color: "#414141",
+              fontFamily: "'Roboto', sans-serif",
+              margin: "40px auto 0px 0px",
+            }}
+          >
+            Email Address<sup>*</sup>
+          </label>
+          <input
+            className="form-control"
+            id="email"
+            name="email"
+            // error={errors.email}
+            // onBlur={handleBlur}
+            // value={values.email}
+            // onChange={(e) => setFieldValue("email", e.target.value)}
+            style={{
+              borderRadius: 0,
+              height: 40,
+              color: "#212121",
+              fontFamily: "'Roboto', sans-serif",
+              marginTop: 15,
+            }}
+          />
+        </div>
+        <div style={{ margin: "70px auto 60px 0px" }}>
+          <h1
+            style={{
+              fontSize: 20,
+              color: "#414141",
+              margin: 0,
+              fontWeight: 600,
+            }}
+          >
+            Login Information
+          </h1>
+          <hr style={{ marginTop: 20 }} />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ width: "49%" }}>
+              <label
+                htmlFor="password"
+                className="form-label"
+                style={{
+                  fontSize: 15,
+                  color: "#414141",
+                  fontFamily: "'Roboto', sans-serif",
+                  margin: "20px auto 0px 0px",
+                }}
+              >
+                Password<sup>*</sup>
+              </label>
+              <input
+                className="form-control"
+                id="password"
+                name="password"
+                // error={errors.email}
+                // onBlur={handleBlur}
+                // value={values.email}
+                // onChange={(e) => setFieldValue("email", e.target.value)}
+                style={{
+                  height: 40,
+                  borderRadius: 0,
+                  color: "#212121",
+                  fontFamily: "'Roboto', sans-serif",
+                  marginTop: 15,
+                }}
+              />
+            </div>
+            <div style={{ width: "49%" }}>
+              <label
+                htmlFor="confirmPassword"
+                className="form-label"
+                style={{
+                  fontSize: 15,
+                  color: "#414141",
+                  fontFamily: "'Roboto', sans-serif",
+                  margin: "20px auto 0px 0px",
+                }}
+              >
+                Confirm Password<sup>*</sup>
+              </label>
+              <input
+                className="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                // error={errors.email}
+                // onBlur={handleBlur}
+                // value={values.email}
+                // onChange={(e) => setFieldValue("email", e.target.value)}
+                style={{
+                  borderRadius: 0,
+                  color: "#212121",
+                  height: 40,
+                  fontFamily: "'Roboto', sans-serif",
+                  marginTop: 15,
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              height: 45,
+              width: 136,
+              backgroundColor: "#f14d54",
+              margin: "0px auto 80px 0px",
+              borderRadius: 0,
+              color: "white",
+              fontWeight: 600,
+            }}
+            onClick={() => navigate("/login")}
+          >
+            Register
+          </button>
+        </div>
+      </div>
     </>
   );
-}
+};
+
+export default Register;

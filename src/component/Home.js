@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* <Typography variant='h1' style={{"margin": "80px"}}>What you want to know? </Typography> */}
-      <div className="home-btn" style={{ marginTop: "50px" }}>
+      {/* <div className="home-btn" style={{ marginTop: "50px" }}>
         <Button
           variant="contained"
           style={{ width: "150px" }}
@@ -49,7 +49,7 @@ const Home = () => {
         >
           Form
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };

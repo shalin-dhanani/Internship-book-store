@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Breadcrumb from "../component/Breadcrumb";
-import { ErrorMessage, Form, Formik, useFormikContext } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormHelperText } from "@mui/material";
 import { toast } from "react-toastify";
@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import authservice from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import PageHeding from "../component/PageHeding";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const Login = () => {
           toast.success("User Logged in Successfully!", {
             position: "bottom-right",
           });
-          navigate("/home");
+          navigate("/");
           Cookies.set("auth_email", values.email);
         }
       })
@@ -38,27 +39,7 @@ const Login = () => {
   return (
     <>
       <Breadcrumb value="Login" />
-      <h1
-        style={{
-          marginTop: 0,
-          marginBottom: 25,
-          textAlign: "center",
-          fontFamily: "'Roboto', sans-serif",
-          color: "#414141",
-          fontWeight: 700,
-          fontSize: 32,
-        }}
-      >
-        Login or Create an Account
-      </h1>
-      <div
-        style={{
-          backgroundColor: "#f14d54",
-          height: 3,
-          width: "14%",
-          margin: "0px auto",
-        }}
-      ></div>
+      <PageHeding heading="Login or Create an Account" />
       <div className="container" style={{ marginTop: 50, display: "flex" }}>
         <div style={{ width: "45%", marginRight: 50 }}>
           <h1
@@ -127,6 +108,7 @@ const Login = () => {
               fontWeight: 500,
               borderRadius: 0,
             }}
+            onClick={() => navigate("/register")}
           >
             Create an Account
           </button>

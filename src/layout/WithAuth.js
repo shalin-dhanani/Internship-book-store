@@ -9,7 +9,7 @@ const WithAuth = (Component) => {
 
     useEffect(() => {
       if (!email) {
-        navigate("/");
+        navigate("/login");
       }
     }, [email]);
 
